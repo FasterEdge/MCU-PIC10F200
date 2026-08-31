@@ -1,3 +1,7 @@
+/* FasterEdge 开源项目
+ * GitHub: https://github.com/FasterEdge
+ * Gitee:  https://gitee.com/FasterEdge
+ */
 // main.c — FasterEdge MCU PIC10F200 极简版（MPLAB-X + XC8）
 // PIC10F200 资源极小（256 字程序 / 16B RAM / 无 UART / 4 引脚 GPIO），
 // 本平台只实现「寄存器/GPIO 基础控制」：
