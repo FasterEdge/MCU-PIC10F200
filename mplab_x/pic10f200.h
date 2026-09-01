@@ -1,3 +1,8 @@
+// ─────────────────────────────────────────────────────────────
+// FasterEdge 开源项目
+// Github: https://github.com/FasterEdge
+// Gitee:  https://gitee.com/FasterEdge
+// ─────────────────────────────────────────────────────────────
 // pic10f200.h — PIC10F200 最小编译目标定义（供 XC8 或 gcc 语法检查）
 // PIC10F200: 12-bit 指令、256 字程序、16B RAM、4MHz、6 引脚（GP0-GP3 可用）
 // 无 UART/ADC/I2C —— 本平台只做寄存器/GPIO 级基础控制。
