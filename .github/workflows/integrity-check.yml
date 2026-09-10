@@ -16,14 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: '主工程目录检查(keil/MDK-ARM/arduino 任一)'
+      - name: '主工程目录检查(keil/MDK-ARM/arduino/mplab_x/pm_ide 任一)'
         run: |
           set -e
           found=0
-          for d in keil MDK-ARM arduino; do
+          for d in keil MDK-ARM arduino mplab_x pm_ide; do
             if [ -d "$d" ]; then echo "  主工程: $d"; found=1; fi
           done
-          [ "$found" -eq 1 ] || { echo "缺失主工程目录(keil/MDK-ARM/arduino)"; exit 1; }
+          [ "$found" -eq 1 ] || { echo "缺失主工程目录(keil/MDK-ARM/arduino/mplab_x/pm_ide)"; exit 1; }
       - name: 'platformio_ide 源码完整性'
         run: |
           set -e
