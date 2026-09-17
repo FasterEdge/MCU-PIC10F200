@@ -11,8 +11,10 @@
 #include "pic10f200.h"
 
 // ---- 寄存器级驱动（直接读写 SFR）----
-static void gpio_set_output(u8 pin) { TRIS &= (u8)~(1u << pin); }
-static void gpio_set_input(u8 pin)  { TRIS |= (u8)(1u << pin); }
+// TRIS 是只写寄存器, 不能读-改-写; 用影子变量维护方向, 经 XC8 内建 TRIS 指令写入。
+static u8 s_tris = 0xFF;   // 复位默认全输入
+static void gpio_set_output(u8 pin) { s_tris &= (u8)~(1u << pin); TRIS = s_tris; }
+static void gpio_set_input(u8 pin)  { s_tris |= (u8)(1u << pin);  TRIS = s_tris; }
 static void gpio_write(u8 pin, u8 v){ if (v) GPIO |= (u8)(1u << pin); else GPIO &= (u8)~(1u << pin); }
 static u8   gpio_read(u8 pin)       { return (GPIO >> pin) & 1u; }
 

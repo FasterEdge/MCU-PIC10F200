@@ -27,8 +27,13 @@ typedef uint32_t u32;
 #define OSCCAL SFR(0x05)
 #define GPIO   SFR(0x06)
 #define PCON   SFR(0x07)
-#define OPTION SFR(0x08)
-#define TRIS   SFR(0x09)
+// PIC10F200 的 TRIS/OPTION 不是文件寄存器(0x08/0x09 实为通用 RAM), 方向寄存器
+// 必须用 TRIS/OPTION 指令写入。XC8 提供内建 TRIS/OPTION 关键字, 故不在此定义
+// SFR 别名(否则 TRIS=x 会被误展开为写通用 RAM, GPIO 方向从未生效)。
+
+// OPTION 寄存器经 OPTION 指令访问(见 main.c); 保留此注释供参考。
+// #define OPTION SFR(0x08)   // 错误: 0x08 是通用 RAM, 非 OPTION
+// #define TRIS   SFR(0x09)   // 错误: 0x09 是通用 RAM, 非 TRIS
 
 // STATUS 位
 #define _C 0x00

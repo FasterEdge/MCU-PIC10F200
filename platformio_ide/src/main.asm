@@ -30,9 +30,8 @@ TRIS_   equ 0x06+3  ; TRIS 方向寄存器（实际在 bank0 偏移由 PCLATH �
 ; ---- 主程序 ----
 start
     ; GP0 = 输出，GP1 = 输入
-    movwf   0x09        ; 访问 TRIS 文件寄存器
     movlw   b'00000010' ; GP1 输入，其余输出
-    movwf   TRIS_
+    tris    GPIO        ; TRIS 指令: 方向寄存器非文件寄存器, movwf 0x09 只会写通用 RAM
     clrw
     movwf   GPIO_
 
